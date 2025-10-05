@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyApp002MyOwnConstaraintLayout</string>
+    <string name="name">Jméno</string>
+    <string name="surname">Příjmení</string>
+    <string name="email">E-mail</string>
+    <string name="phone">Telefon</string>
+    <string name="desc">Popis</string>
+    <string name="send">Odeslat</string>
+    <string name="delete">Smazat</string>
+    <string name="deletePeople">Smazat osoby</string>
 </resources>
