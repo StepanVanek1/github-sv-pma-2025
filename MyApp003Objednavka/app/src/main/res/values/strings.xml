@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyApp003Objednavka</string>
+    <string name="which_car">Které auto?</string>
+    <string name="first_car">Rapid</string>
+    <string name="second_car">Octavia</string>
+    <string name="third_car">Fabia</string>
+    <string name="better_seats">Lepší sedadla</string>
+    <string name="rugs">Koberce</string>
+    <string name="order_summary">Shrnutí objednávky</string>
+    <string name="order">Objednat</string>
+    <string name="steeringWheelHeated">Vyhřívaný volant</string>
+</resources>
