@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyApp010bHadejCislo</string>
+    <string name="roulette">Ruleta</string>
+    <string name="play">Hrát</string>
+    <string name="dealer">Dealer: </string>
+    <string name="you">"Vy: "</string>
+    <string name="new_game">Nová hra</string>
+    <string name="stay">Zůstat</string>
+    <string name="hit">Další karta</string>
+</resources>

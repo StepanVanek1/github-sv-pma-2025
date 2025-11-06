@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyApp009bImageToApp</string>
+    <string name="upload_photo">Nahrát fotografii</string>
+    <string name="delete_photo">Smazat fotografii</string>
+    <string name="black_and_white_filter">Černobílý filtr</string>
+    <string name="sepia_filter">Teplý filtr</string>
+    <string name="uploaded_image">Nahraná fotografie</string>
+</resources>

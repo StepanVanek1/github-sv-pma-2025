@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyApp10</string>
+    <string name="upload">Nahrát</string>
+    <string name="name">Jméno</string>
+    <string name="surname">Příjmení</string>
+    <string name="male">Muž</string>
+    <string name="female">Žena</string>
+    <string name="other">Jiné</string>
+    <string name="age">Věk</string>
+    <string name="random">Náhodně</string>
+    <string name="save">Uložit</string>
+    <string name="go_back">Zpět</string>
+</resources>
