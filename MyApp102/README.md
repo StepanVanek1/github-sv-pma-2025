@@ -35,8 +35,19 @@ android {
 }
 ```
 
-Po přidání výše uvedeného kódu zapneme "Sync project with Gradle files" (Ikonka slona v pravé horní části aplikace)
+Po přidání výše uvedeného kódu zapneme `Sync project with Gradle files` (Ikonka slona v pravé horní části aplikace)
 
 Nyní je možné začít samotný vývoj aplikace.
+
+## 3) Vytvořit layouty pro 2 různé zobrazení
+
+První layout je už vytvořený (`app -> res -> layout -> activity_main.xml`)
+Do stejné složky zároveň vytvoříme layout s názvem `activity_detail.xml`
+
+Tato aplikace využívá v obou složkách LinearLayout, ale využití ConstraintLayout-u je zde také možné.
+
+
+
+
 
 
