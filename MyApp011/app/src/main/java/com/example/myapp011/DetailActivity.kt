@@ -1,9 +1,8 @@
-package com.example.myapp010brandomapp
+package com.example.myapp011
 
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapp010brandomapp.databinding.ActivityDetailBinding
+import com.example.myapp011.databinding.ActivityDetailBinding
 import androidx.core.net.toUri
 
 class DetailActivity : AppCompatActivity() {
