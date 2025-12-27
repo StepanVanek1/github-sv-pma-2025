@@ -1,4 +1,4 @@
-package com.example.myapp10
+package com.example.myapp010brandomapp
 
 import android.app.Activity
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapp10.databinding.ActivityMainBinding
+import com.example.myapp010brandomapp.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlin.random.Random
 

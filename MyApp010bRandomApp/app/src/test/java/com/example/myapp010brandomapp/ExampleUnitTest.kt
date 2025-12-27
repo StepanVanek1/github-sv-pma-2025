@@ -1,4 +1,4 @@
-package com.example.myapp10
+package com.example.myapp010brandomapp
 
 import org.junit.Test
 
