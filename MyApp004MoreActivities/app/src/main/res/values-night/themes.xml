@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="Theme.MyApp004MoreActivities"
+        parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    </style>
+
+</resources>
