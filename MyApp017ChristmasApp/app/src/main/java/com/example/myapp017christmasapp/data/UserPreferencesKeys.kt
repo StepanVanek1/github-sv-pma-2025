@@ -1,17 +1,11 @@
 package com.example.myapp017christmasapp.data
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
 
 object UserPreferencesKeys {
-
-    // 1) Zapnutí / vypnutí Dark Mode
-    val DARK_MODE = booleanPreferencesKey("dark_mode")
-
-    // 2) Uložené jméno uživatele
-    val USERNAME = stringPreferencesKey("username")
-
-    // 3) Velikost fontu (např. 14, 16, 18…)
-    val FONT_SIZE = intPreferencesKey("font_size")
+    val GIFT_MOM = booleanPreferencesKey("gift_mom")
+    val GIFT_DAD = booleanPreferencesKey("gift_dad")
+    val GIFT_CAT = booleanPreferencesKey("gift_cat")
+    val GIFT_DOG = booleanPreferencesKey("gift_dog")
+    val GIFT_SIBLING = booleanPreferencesKey("gift_sibling")
 }

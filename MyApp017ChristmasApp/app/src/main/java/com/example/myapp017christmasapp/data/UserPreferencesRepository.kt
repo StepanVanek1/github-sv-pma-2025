@@ -2,54 +2,49 @@ package com.example.myapp017christmasapp.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class UserPreferencesRepository(private val context: Context) {
-
+class GiftsPreferencesRepository(context: Context) {
 
     private val dataStore = context.settingsDataStore
 
-    // ------------------------
-    // 1) DARK MODE (Boolean)
-    // ------------------------
-
-    suspend fun setDarkMode(enabled: Boolean) {
-        dataStore.edit { prefs ->
-            prefs[UserPreferencesKeys.DARK_MODE] = enabled
-        }
+    val momGiftFlow = dataStore.data.map {
+        it[UserPreferencesKeys.GIFT_MOM] ?: false
     }
 
-    val darkModeFlow: Flow<Boolean> = dataStore.data.map { prefs ->
-        prefs[UserPreferencesKeys.DARK_MODE] ?: false
+    val dadGiftFlow = dataStore.data.map {
+        it[UserPreferencesKeys.GIFT_DAD] ?: false
     }
 
-
-    // ------------------------
-    // 2) USERNAME (String)
-    // ------------------------
-
-    suspend fun setUsername(name: String) {
-        dataStore.edit { prefs ->
-            prefs[UserPreferencesKeys.USERNAME] = name
-        }
+    val dogGiftFlow = dataStore.data.map {
+        it[UserPreferencesKeys.GIFT_DOG] ?: false
     }
 
-    val usernameFlow: Flow<String> = dataStore.data.map { prefs ->
-        prefs[UserPreferencesKeys.USERNAME] ?: ""
+    val catGiftFlow = dataStore.data.map {
+        it[UserPreferencesKeys.GIFT_CAT] ?: false
     }
 
-    // ------------------------
-    // 3) FONT SIZE (Int)
-    // ------------------------
-
-    suspend fun setFontSize(size: Int) {
-        dataStore.edit { prefs ->
-            prefs[UserPreferencesKeys.FONT_SIZE] = size
-        }
+    val siblingGiftFlow = dataStore.data.map {
+        it[UserPreferencesKeys.GIFT_SIBLING] ?: false
     }
 
-    val fontSizeFlow: Flow<Int> = dataStore.data.map { prefs ->
-        prefs[UserPreferencesKeys.FONT_SIZE] ?: 16
+    suspend fun setMomGift(value: Boolean) {
+        dataStore.edit { it[UserPreferencesKeys.GIFT_MOM] = value }
+    }
+
+    suspend fun setDadGift(value: Boolean) {
+        dataStore.edit { it[UserPreferencesKeys.GIFT_DAD] = value }
+    }
+
+    suspend fun setDogGift(value: Boolean) {
+        dataStore.edit { it[UserPreferencesKeys.GIFT_DOG] = value }
+    }
+
+    suspend fun setCatGift(value: Boolean) {
+        dataStore.edit { it[UserPreferencesKeys.GIFT_CAT] = value }
+    }
+
+    suspend fun setSiblingGift(value: Boolean) {
+        dataStore.edit { it[UserPreferencesKeys.GIFT_SIBLING] = value }
     }
 }
