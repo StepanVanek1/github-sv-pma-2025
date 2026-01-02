@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/welcomeFragment"
+        android:icon="@drawable/welcome"
+        android:title="@string/welcome_page" />
+
+    <item
+        android:id="@+id/quizesOverviewFragment"
+        android:icon="@drawable/game"
+        android:title="@string/quizes" />
+
+    <item
+        android:id="@+id/leaderboardFragment"
+        android:icon="@drawable/leaderboard"
+        android:title="@string/leaderboard" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/account"
+        android:title="@string/profile" />
+</menu>

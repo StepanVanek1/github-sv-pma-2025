@@ -9,5 +9,6 @@ data class Question(
     val id: Long = 0L,
     val question: String,
     val correctAnswer: String,
-    val creatorId: Long
+    val creatorId: Long,
+    val gameId: Long
 )

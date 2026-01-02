@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.quizgame.WelcomeFragment" />
+
+    <fragment
+        android:id="@+id/quizesOverviewFragment"
+        android:name="com.example.quizgame.QuizesOverviewFragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.quizgame.ProfileFragment" />
+
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.example.quizgame.LeaderboardFragment" />
+</navigation>
