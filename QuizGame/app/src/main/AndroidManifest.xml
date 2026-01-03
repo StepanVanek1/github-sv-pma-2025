@@ -12,14 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizGame">
         <activity
-            android:name=".QuestionActivity"
+            android:name=".activities.QuizOverviewActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateQuestionActivity"
+            android:name=".activities.QuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CreateQuestionActivity"
             android:exported="false"
             android:theme="@style/Theme.QuizGame" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

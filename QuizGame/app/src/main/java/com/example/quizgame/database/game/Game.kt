@@ -9,5 +9,6 @@ data class Game(
     val id: Long = 0L,
     val playerId: Long,
     val score: Int,
-    val createdAt: Long
+    val createdAt: Long,
+    val quizId: Long
 )

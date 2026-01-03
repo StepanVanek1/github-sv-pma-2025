@@ -14,8 +14,7 @@
             android:id="@+id/twGameName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="32sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/twPlayerName"
@@ -28,6 +27,5 @@
         android:id="@+id/twTimeOfGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black" />
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

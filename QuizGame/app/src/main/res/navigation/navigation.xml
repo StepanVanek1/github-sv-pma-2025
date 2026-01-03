@@ -6,17 +6,17 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.quizgame.WelcomeFragment" />
+        android:name="com.example.quizgame.fragments.WelcomeFragment" />
 
     <fragment
         android:id="@+id/quizesOverviewFragment"
-        android:name="com.example.quizgame.QuizesOverviewFragment" />
+        android:name="com.example.quizgame.fragments.QuizzesOverviewFragment" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.quizgame.ProfileFragment" />
+        android:name="com.example.quizgame.fragments.ProfileFragment" />
 
     <fragment
         android:id="@+id/leaderboardFragment"
-        android:name="com.example.quizgame.LeaderboardFragment" />
+        android:name="com.example.quizgame.fragments.LeaderboardFragment" />
 </navigation>
