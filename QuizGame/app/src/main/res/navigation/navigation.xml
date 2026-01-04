@@ -9,7 +9,7 @@
         android:name="com.example.quizgame.fragments.WelcomeFragment" />
 
     <fragment
-        android:id="@+id/quizesOverviewFragment"
+        android:id="@+id/quizzesOverviewFragment"
         android:name="com.example.quizgame.fragments.QuizzesOverviewFragment" />
 
     <fragment

@@ -11,7 +11,7 @@ import com.example.quizgame.R
 import com.example.quizgame.database.AppDatabaseInstance
 import com.example.quizgame.database.user.User
 import com.example.quizgame.databinding.ActivityMainBinding
-import com.example.quizgame.managers.UserManager
+import com.example.quizgame.utils.UserManager
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {

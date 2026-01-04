@@ -1,11 +1,10 @@
-package com.example.quizgame.adapter
+package com.example.quizgame.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizgame.database.question.Question
-import com.example.quizgame.databinding.QuizComponentBinding
+import com.example.quizgame.databinding.QuestionComponentBinding
 
 class QuizQuestionsAdapter(
     private val questions: List<Question>,
@@ -13,11 +12,11 @@ class QuizQuestionsAdapter(
     private val onEdit: ((Question) -> Unit)? = null
 ) : RecyclerView.Adapter<QuizQuestionsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: QuizComponentBinding) :
+    inner class ViewHolder(val binding: QuestionComponentBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = QuizComponentBinding.inflate(
+        val binding = QuestionComponentBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -27,12 +26,8 @@ class QuizQuestionsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val question = questions[position]
-        holder.binding.twQuizName.text = question.question
-        holder.binding.twCreator.text = "Odpověď: ${question.correctAnswer}"
-
-        holder.binding.btnPlay.visibility = View.GONE
-        holder.binding.btnEdit.visibility = View.VISIBLE
-        holder.binding.btnDelete.visibility = View.VISIBLE
+        holder.binding.twQuestion.text = question.question
+        holder.binding.twAnswer.text = "Odpověď: ${question.correctAnswer}"
 
         holder.binding.btnDelete.setOnClickListener { onDelete?.invoke(question) }
         holder.binding.btnEdit.setOnClickListener { onEdit?.invoke(question) }

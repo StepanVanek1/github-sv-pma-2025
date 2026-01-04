@@ -12,7 +12,7 @@ import com.example.quizgame.R
 import com.example.quizgame.activities.QuizOverviewActivity
 import com.example.quizgame.database.AppDatabaseInstance
 import com.example.quizgame.databinding.FragmentQuizesOverviewBinding
-import com.example.quizgame.managers.UserManager
+import com.example.quizgame.utils.UserManager
 import kotlinx.coroutines.launch
 
 class QuizzesOverviewFragment : Fragment(R.layout.fragment_quizes_overview) {
@@ -31,7 +31,7 @@ class QuizzesOverviewFragment : Fragment(R.layout.fragment_quizes_overview) {
     private fun initQuizzes() {
         lifecycleScope.launch {
             val db = AppDatabaseInstance.getDatabase(requireContext())
-            val quizzes = db.quizDao().getAllQuizes() ?: emptyList()
+            val quizzes = db.quizDao().getAllQuizzes() ?: emptyList()
 
             if (quizzes.isEmpty()) {
                 binding.tvEmpty.visibility = View.VISIBLE

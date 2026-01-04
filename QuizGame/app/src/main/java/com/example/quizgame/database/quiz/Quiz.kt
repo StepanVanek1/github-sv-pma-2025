@@ -1,3 +1,5 @@
+package com.example.quizgame.database.quiz
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

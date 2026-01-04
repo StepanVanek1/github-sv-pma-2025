@@ -14,9 +14,6 @@ interface QuestionDao {
     @Update
     suspend fun updateQuestion(question: Question)
 
-    @Query("SELECT * FROM question WHERE quizId = :id ORDER BY RANDOM() LIMIT 1")
-    suspend fun getRandomQuestionByQuizId(id: Long): Question?
-
     @Delete
     suspend fun deleteQuestion(question: Question)
 
@@ -26,6 +23,6 @@ interface QuestionDao {
     @Query("SELECT * FROM question WHERE quizId = :id")
     suspend fun getAllQuizQuestions(id: Long): List<Question>?
 
-    @Query("SELECT * FROM question WHERE id != :excludeId ORDER BY RANDOM() LIMIT 2")
-    suspend fun getRandomQuestionExcluding(excludeId: Long): List<Question>?
+    @Query("SELECT correctAnswer FROM question WHERE id != :excludeQuestionId ORDER BY RANDOM() LIMIT 2")
+    suspend fun getRandomWrongAnswersGlobal(excludeQuestionId: Long): List<String>
 }

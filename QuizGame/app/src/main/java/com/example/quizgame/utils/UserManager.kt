@@ -1,4 +1,4 @@
-package com.example.quizgame.managers
+package com.example.quizgame.utils
 
 import android.content.Context
 import androidx.core.content.edit

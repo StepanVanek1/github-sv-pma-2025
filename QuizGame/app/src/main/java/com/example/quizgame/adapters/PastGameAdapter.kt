@@ -1,4 +1,4 @@
-package com.example.quizgame.adapter
+package com.example.quizgame.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quizgame.database.game.Game
 import com.example.quizgame.databinding.PastGameComponentBinding
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class PastGameAdapter(
@@ -15,7 +14,8 @@ class PastGameAdapter(
     private val quizNameResolver: ((Long) -> String)? = null
 ) : RecyclerView.Adapter<PastGameAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: PastGameComponentBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: PastGameComponentBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = PastGameComponentBinding.inflate(
@@ -35,13 +35,9 @@ class PastGameAdapter(
         val playerName = userNameResolver?.invoke(game.playerId) ?: "Neznámý hráč"
         holder.binding.twPlayerName.text = "$playerName (Skóre: ${game.score})"
 
-        holder.binding.twTimeOfGame.text = formatTime(game.createdAt)
+        val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+        holder.binding.twTimeOfGame.text = sdf.format(game.createdAt)
     }
 
     override fun getItemCount() = games.size
-
-    private fun formatTime(timestamp: Long): String {
-        val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
-        return sdf.format(Date(timestamp))
-    }
 }

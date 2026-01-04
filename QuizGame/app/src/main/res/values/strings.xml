@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">QuizGame</string>
-    <string name="quizes">Kvízy</string>
+    <string name="quizzes">Kvízy</string>
     <string name="profile">Profil</string>
     <string name="leaderboard">Žebříček</string>
     <string name="welcome">Vítejte</string>
@@ -27,4 +27,5 @@
     <string name="delete">Smazat</string>
     <string name="edit">Upravit</string>
     <string name="quiz_name">Název kvízu</string>
+    <string name="username">Jméno</string>
 </resources>

@@ -11,10 +11,11 @@ import com.example.quizgame.adapters.QuizAdapter
 import com.example.quizgame.R
 import com.example.quizgame.activities.QuestionActivity
 import com.example.quizgame.activities.QuizOverviewActivity
-import com.example.quizgame.adapter.PastGameAdapter
+import com.example.quizgame.adapters.PastGameAdapter
 import com.example.quizgame.database.AppDatabaseInstance
 import com.example.quizgame.databinding.FragmentProfileBinding
-import com.example.quizgame.managers.UserManager
+import com.example.quizgame.utils.UserManager
+import com.example.quizgame.utils.hideKeyboard
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -38,10 +39,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             lifecycleScope.launch {
                 val db = AppDatabaseInstance.getDatabase(requireContext())
-                val userId = UserManager.getUserId(requireContext())
 
-                val currentUser = db.userDao().getUserById(userId)
-                currentUser?.let {
+                val userId = UserManager.getUserId(requireContext())
+                val user = db.userDao().getUserById(userId)
+
+                user?.let {
                     val updatedUser = it.copy(name = newName)
                     db.userDao().updateUser(updatedUser)
 
@@ -49,10 +51,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         .show()
 
                     binding.etNameEdit.clearFocus()
+                    binding.etNameEdit.hideKeyboard()
                 }
             }
         }
 
+        loadQuizAndGamePart()
+    }
+
+    private fun loadQuizAndGamePart() {
         lifecycleScope.launch {
             val db = AppDatabaseInstance.getDatabase(requireContext())
 
@@ -62,22 +69,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.etNameEdit.setText(user?.name)
 
             val pastGames = db.gameDao().getGamesByPlayerId(userId) ?: emptyList()
-            var createdQuizes = db.quizDao().getAllQuizesByCreatorId(userId) ?: emptyList()
+            val createdQuizzes = db.quizDao().getAllQuizzesByCreatorId(userId) ?: emptyList()
+            val quizzes = db.quizDao().getAllQuizzes()
+            val quizzesMap = quizzes?.associateBy { it.id }
 
             if (pastGames.isEmpty()) {
                 binding.tvEmptyGames.visibility = View.VISIBLE
                 binding.rvProfilePastGames.visibility = View.GONE
             } else {
-                binding.rvProfilePastGames.adapter =
-                    PastGameAdapter(pastGames)
+                binding.rvProfilePastGames.adapter = PastGameAdapter(
+                    games = pastGames,
+                    userNameResolver = { user?.name },
+                    quizNameResolver = { id ->
+                        quizzesMap?.get(id)?.name ?: "Neznámý kvíz"
+                    })
             }
 
-            if (createdQuizes.isEmpty()) {
+            if (createdQuizzes.isEmpty()) {
                 binding.tvEmptyQuiz.visibility = View.VISIBLE
                 binding.rvProfileQuizes.visibility = View.GONE
             } else {
                 binding.rvProfileQuizes.adapter = QuizAdapter(
-                    quizzes = createdQuizes,
+                    quizzes = createdQuizzes,
                     currentUserId = UserManager.getUserId(requireContext()),
                     onPlay = { quiz ->
                         val intent = Intent(requireContext(), QuestionActivity::class.java)
@@ -92,11 +105,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     onDelete = { quiz ->
                         lifecycleScope.launch {
                             db.quizDao().deleteQuiz(quiz)
-                            createdQuizes =
-                                db.quizDao().getAllQuizesByCreatorId(userId) ?: emptyList()
+                            loadQuizAndGamePart()
                         }
                     },
-                    userNameResolver = { creatorId ->
+                    userNameResolver = {
                         user?.name ?: "Neznámý autor"
                     },
                 )

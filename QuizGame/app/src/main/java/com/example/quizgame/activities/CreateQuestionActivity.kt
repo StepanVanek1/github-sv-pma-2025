@@ -55,18 +55,26 @@ class CreateQuestionActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
                 val db = AppDatabaseInstance.getDatabase(this@CreateQuestionActivity)
-                val newQuestion = Question(
-                    id = if (questionId == -1L) 0L else questionId,
-                    question = binding.etQuestion.text.toString(),
-                    correctAnswer = binding.etCorrectAnswer.text.toString(),
-                    quizId = quizId,
-                    multipleChoice = binding.rdBtnChoiceQuestion.isChecked
-                )
 
                 if (questionId == -1L) {
-                    db.questionDao().insertQuestion(newQuestion)
+                    db.questionDao().insertQuestion(
+                        Question(
+                            question = binding.etQuestion.text.toString(),
+                            correctAnswer = binding.etCorrectAnswer.text.toString(),
+                            quizId = quizId,
+                            multipleChoice = binding.rdBtnChoiceQuestion.isChecked
+                        )
+                    )
                 } else {
-                    db.questionDao().updateQuestion(newQuestion)
+                    db.questionDao().updateQuestion(
+                        Question(
+                            id = questionId,
+                            question = binding.etQuestion.text.toString(),
+                            correctAnswer = binding.etCorrectAnswer.text.toString(),
+                            quizId = quizId,
+                            multipleChoice = binding.rdBtnChoiceQuestion.isChecked
+                        )
+                    )
                 }
                 finish()
             }

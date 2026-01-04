@@ -1,10 +1,10 @@
 package com.example.quizgame.adapters
 
-import Quiz
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quizgame.database.quiz.Quiz
 import com.example.quizgame.databinding.QuizComponentBinding
 
 class QuizAdapter(
@@ -34,7 +34,7 @@ class QuizAdapter(
         holder.binding.twQuizName.text = quiz.name
 
         val authorName = userNameResolver(quiz.creatorId)
-        holder.binding.twCreator.text = "Autor: $authorName" //
+        holder.binding.twCreator.text = "Autor: $authorName"
 
         if (quiz.creatorId == currentUserId) {
             holder.binding.btnEdit.visibility = View.VISIBLE

@@ -4,6 +4,7 @@ import com.example.quizgame.database.game.Game
 import com.example.quizgame.database.game.GameDao
 import com.example.quizgame.database.question.Question
 import com.example.quizgame.database.question.QuestionDao
+import com.example.quizgame.database.quiz.Quiz
 import com.example.quizgame.database.quiz.QuizDao
 import com.example.quizgame.database.user.User
 import com.example.quizgame.database.user.UserDao

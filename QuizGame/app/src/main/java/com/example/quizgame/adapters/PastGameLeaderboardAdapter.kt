@@ -1,4 +1,4 @@
-package com.example.quizgame.adapter // Pozor na správný název balíčku (singular/plural)
+package com.example.quizgame.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,7 +30,7 @@ class PastGameLeaderboardAdapter(
         holder.binding.twGameName.text = "Hráč: $playerName"
         holder.binding.twPlayerName.text = "Skóre: ${game.score}"
 
-        val sdf = SimpleDateFormat("dd.MM. HH:mm", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
         holder.binding.twTimeOfGame.text = sdf.format(game.createdAt)
     }
 

@@ -6,9 +6,9 @@
         android:title="@string/welcome_page" />
 
     <item
-        android:id="@+id/quizesOverviewFragment"
+        android:id="@+id/quizzesOverviewFragment"
         android:icon="@drawable/game"
-        android:title="@string/quizes" />
+        android:title="@string/quizzes" />
 
     <item
         android:id="@+id/leaderboardFragment"

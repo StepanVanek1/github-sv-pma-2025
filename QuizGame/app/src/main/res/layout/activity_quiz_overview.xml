@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingHorizontal="10dp"
     android:paddingTop="40dp"
     android:paddingBottom="10dp"
-    android:paddingHorizontal="10dp"
     tools:context=".activities.QuizOverviewActivity">
 
     <LinearLayout
@@ -15,13 +16,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/etQuizName"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_weight="1"
-            android:hint="@string/quiz_name" />
+            android:hint="@string/quiz_name"
+            app:boxStrokeColor="@color/cyan"
+            app:hintTextColor="@color/cyan">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etQuizName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSaveName"
@@ -44,6 +55,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:backgroundTint="@color/cyan"
-        android:src="@drawable/add" />
+        android:src="@drawable/add"
+        android:tint="@color/white" />
 
 </LinearLayout>

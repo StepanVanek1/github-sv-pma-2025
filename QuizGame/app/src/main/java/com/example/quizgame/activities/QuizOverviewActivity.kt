@@ -6,10 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.quizgame.adapter.QuizQuestionsAdapter
+import com.example.quizgame.adapters.QuizQuestionsAdapter
 import com.example.quizgame.database.AppDatabaseInstance
 import com.example.quizgame.databinding.ActivityQuizOverviewBinding
-import com.example.quizgame.managers.UserManager
+import com.example.quizgame.utils.hideKeyboard
 import kotlinx.coroutines.launch
 
 class QuizOverviewActivity : AppCompatActivity() {
@@ -73,7 +73,8 @@ class QuizOverviewActivity : AppCompatActivity() {
                     }
                 },
                 onEdit = { questionToEdit ->
-                    val intent = Intent(this@QuizOverviewActivity, CreateQuestionActivity::class.java)
+                    val intent =
+                        Intent(this@QuizOverviewActivity, CreateQuestionActivity::class.java)
                     intent.putExtra("QUIZ_ID", quizId)
                     intent.putExtra("QUESTION_ID", questionToEdit.id)
                     startActivity(intent)
@@ -85,15 +86,18 @@ class QuizOverviewActivity : AppCompatActivity() {
     private fun saveQuizTitle() {
         val newTitle = binding.etQuizName.text.toString()
         if (newTitle.isBlank()) {
-            Toast.makeText(this, "Název nesmí být prázdný", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Název kvízu nesmí být prázdný", Toast.LENGTH_SHORT).show()
             return
         }
 
         lifecycleScope.launch {
             val db = AppDatabaseInstance.getDatabase(this@QuizOverviewActivity)
             db.quizDao().updateName(quizId, newTitle)
-            Toast.makeText(this@QuizOverviewActivity, "Název uložen", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@QuizOverviewActivity, "Název kvízu byl upraven", Toast.LENGTH_SHORT).show()
         }
+
+        binding.etQuizName.clearFocus()
+        binding.etQuizName.hideKeyboard()
     }
 
     override fun onResume() {

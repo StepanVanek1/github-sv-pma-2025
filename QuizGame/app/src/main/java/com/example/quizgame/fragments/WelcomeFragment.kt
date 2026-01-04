@@ -1,6 +1,5 @@
 package com.example.quizgame.fragments
 
-import Quiz
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,38 +8,33 @@ import androidx.lifecycle.lifecycleScope
 import com.example.quizgame.R
 import com.example.quizgame.activities.QuizOverviewActivity
 import com.example.quizgame.database.AppDatabaseInstance
+import com.example.quizgame.database.quiz.Quiz
 import com.example.quizgame.databinding.FragmentWelcomeBinding
-import com.example.quizgame.managers.UserManager
+import com.example.quizgame.utils.UserManager
 import kotlinx.coroutines.launch
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
-
-    private var _binding: FragmentWelcomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentWelcomeBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        _binding = FragmentWelcomeBinding.bind(view)
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentWelcomeBinding.bind(view)
 
         binding.btnCreateQuiz.setOnClickListener {
             lifecycleScope.launch {
                 val db = AppDatabaseInstance.getDatabase(requireContext())
-                val newQuiz =
+                val quizId = db.quizDao().insertQuiz(
                     Quiz(
                         name = "Nový kvíz",
                         creatorId = UserManager.getUserId(requireContext()),
                         createdAt = System.currentTimeMillis()
                     )
-                val quizId = db.quizDao().insertQuiz(newQuiz)
+                )
 
                 val intent = Intent(requireContext(), QuizOverviewActivity::class.java)
                 intent.putExtra("QUIZ_ID", quizId)
                 startActivity(intent)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

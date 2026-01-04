@@ -15,7 +15,6 @@ object AppDatabaseInstance {
                 AppDatabase::class.java,
                 "app_database"
             )
-                .fallbackToDestructiveMigration()
                 .build()
                 .also { INSTANCE = it }
         }

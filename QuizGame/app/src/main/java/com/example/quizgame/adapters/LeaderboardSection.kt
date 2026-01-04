@@ -1,4 +1,4 @@
-package com.example.quizgame.adapter
+package com.example.quizgame.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,10 +17,12 @@ class LeaderboardSectionAdapter(
     private val userNameResolver: (Long) -> String
 ) : RecyclerView.Adapter<LeaderboardSectionAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: QuizResultsComponentBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: QuizResultsComponentBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = QuizResultsComponentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            QuizResultsComponentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -28,9 +30,7 @@ class LeaderboardSectionAdapter(
         val section = sections[position]
 
         holder.binding.twQuizName.text = section.quizTitle
-
         holder.binding.rvPastGames.layoutManager = LinearLayoutManager(holder.itemView.context)
-
         holder.binding.rvPastGames.adapter = PastGameLeaderboardAdapter(
             games = section.games,
             userNameResolver = userNameResolver
